@@ -28,12 +28,22 @@ export default function MovieCard({ movie }: MovieCardProps) {
       onMouseEnter={handleMouseEnter}
     >
       <Link to={`/movie/${movie.id}`}>
-        <img
-          src={getImageUrl(movie.poster_path)}
-          alt={movie.title}
-          className="w-full object-cover"
-          loading="lazy"
-        />
+        <div
+          className="overflow-hidden min-h-88.75 relative bg-black
+                 before:absolute before:inset-0
+                 before:m-auto before:h-120 before:w-120
+                 before:rounded-full before:bg-indigo-400/40
+                 before:blur-[120px]
+                 before:animate-[pulse_2s_ease-in-out_infinite]"
+        >
+          <img
+            src={getImageUrl(movie.poster_path)}
+            alt={movie.title}
+            className="w-full object-cover relative z-9"
+            loading="lazy"
+            height="355px"
+          />
+        </div>
         <div className="p-3">
           <h3 className="truncate font-semibold">{movie.title}</h3>
           <p className="text-sm text-gray-400">

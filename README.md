@@ -1,73 +1,48 @@
-# React + TypeScript + Vite
+# CineTrack 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A movie discovery and watchlist app built with React, TypeScript,
+and the TMDB API.
 
-Currently, two official plugins are available:
+🔗 **Live demo:** https://cinetrack-drab.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![CineTrack Preview](./screenshots/preview.png)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Browse popular movies** — paginated grid with TMDB data
+- **Search** — instant results with loading and empty states
+- **Movie detail** — backdrop hero, cast, budget, production info
+- **Watchlist** — add/remove movies, sort by date/rating/title
+- **Filter by rating** — range slider to filter watchlist
+- **Prefetch on hover** — instant navigation to detail pages
+- **Persistent watchlist** — survives page refresh via Zustand persist
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 18 + TypeScript
+- React Router v6 — client-side routing, lazy loading
+- TanStack Query — server state, caching, prefetching
+- Zustand — watchlist state with localStorage persistence
+- Tailwind CSS — utility-first styling
+- Axios — typed HTTP client
+- TMDB API — movie data
+- Vite — build tooling
+- Vercel — deployment
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## What I learned
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+A React project — first with TypeScript. Key concepts:
+component architecture with strict typing, TanStack Query for
+server state with prefetching, Zustand for persistent client state,
+and React Router for SPA navigation with lazy loading.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Run locally
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/yourusername/cinetrack
+cd cinetrack
+npm install
+# Add your TMDB Bearer token to .env.local
+# VITE_TMDB_TOKEN=your_token_here
+npm run dev
 ```
